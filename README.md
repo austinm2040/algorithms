@@ -1,1 +1,3 @@
-# algorithms
+# Algorithms
+
+Daily practice using leetcode
