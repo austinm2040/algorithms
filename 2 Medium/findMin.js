@@ -43,14 +43,15 @@ nums is sorted and rotated between 1 and n times.
 /*
 
 edge case: nums length = 1 --> return nums[0]
-define start and end of array
-check if start < end --> if so, array is sorted, return nums[0]
+define start and end of nums
+check if start < end --> if so, nums is sorted, return nums[0]
 otherwise, binary search:
+will need to update start and end values
 while loop --> while end > start
 define midpoint
- if array at mid > array at mid + 1 --> Min = array at mid + 1
- if array at mid < array at mid - 1 --> Min = array at mid
- if array at mid > array at 0 --> update start varable to = mid + 1
+ if nums at mid > nums at mid + 1 --> Min = nums at mid + 1
+ if nums at mid < nums at mid - 1 --> Min = nums at mid
+ if nums at mid > nums at 0 --> update start varable to = mid + 1
  otherwise, update end variable to = mid - 1
 */
 
