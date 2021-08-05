@@ -34,14 +34,44 @@ All values of nums are unique.
 nums is guaranteed to be rotated at some pivot.
 -10^4 <= target <= 10^4
 
-
 */
 
 /*
-
-
+define start and end (0, nums.length - 1)
+use while loop -> will be updating start and end since nums originally in ascending order
+ define midpoint
+ check if target = midpoint
+ First check if midpoint value >= start
+  1) if start value =< target & midpoint value > target --> update end to left of midpoint
+  2) else update start to right of midpoint
+ If midpoint value < start
+  1) if end value >= target & midpoing value < target --> update start to right of midpoint
+  2) else update end to left of midpoint
+ If value not found, return -1
 */
 
 const search = (nums, target) => {
-
+  let start = 0;
+  let end = nums.length - 1;
+  while (end >= start) {
+    let mid = start + Math.round((end - start) / 2);
+    if (nums[mid] === target) {
+      return mid;
+    } else {
+    if (nums[mid] >= nums[start]) {
+      if (nums[start] <= target && nums[mid] > target) {
+        end = mid - 1;
+      } else {
+        start = mid + 1;
+      }
+    } else {
+      if (nums[end] >= target && nums[mid] < target) {
+        start = mid + 1;
+      } else {
+          end = mid - 1;
+        }
+      }
+    }
+  }
+  return -1;
 };
