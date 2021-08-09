@@ -34,9 +34,21 @@ s consists of English letters, digits, symbols and spaces.
 
 /*
 edge case: string length 0 or 1 --> return length
-create obj to keep track of characters
-
-
+**Sliding window**
+create chars Obj to keep track of characters
+keep track of left, right
+create variable for result - longest substring
+while right value < length of string:
+ define a characterRight to be the character at current index of 'right'
+ check if characterRight is in chars Obj
+ if so, set = 1 -> else, add 1
+ while a duplicate has been found:
+ while chars Obj at characterRight > 1
+  define characterLeft to be character at current index of 'left'
+  subtract 1 from chars Obj at characterLeft (duplicate character, to set back to 1)
+  increase left value by 1
+take max of current longest substring and (right - left + 1)
+add 1 to right value
 */
 
 const lengthOfLongestSubstring = (s) => {
