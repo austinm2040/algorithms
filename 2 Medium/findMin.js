@@ -51,8 +51,8 @@ while loop --> while end > start
 define midpoint
  if nums at mid > nums at mid + 1 --> Min = nums at mid + 1
  if nums at mid < nums at mid - 1 --> Min = nums at mid
- if nums at mid > nums at 0 --> update start varable to = mid + 1
- otherwise, update end variable to = mid - 1
+ if nums at mid > nums at 0, min is in right side of midpoint --> update start varable to = mid + 1
+ otherwise, min is in left side of midpoint --> update end variable to = mid - 1
 */
 
 const findMin = (nums) => {
