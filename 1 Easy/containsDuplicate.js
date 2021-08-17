@@ -40,5 +40,6 @@ const containsDuplicate = (nums) => {
       return true;
     }
   }
+
   return false;
 };
