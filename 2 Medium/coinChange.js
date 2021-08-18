@@ -43,6 +43,17 @@ Constraints:
 /*
 **dynamic programming**
 bottom-up approach
+create dp: new array with indexes = 1 more than amount
+set dp[0] = 0
+will be storing minimum coin combinations to reach desired amount
+ if combinations not possible, amount at that index will be 1 more than desired amount (will use later to return -1)
+double loop
+ first start at index i = 1; i <= amount
+  second start at index j = 0; j < length of coins array
+   check if index of coins array (each coin) <= current index, i
+   if so, update dp at index i --> take Min(current dp[i], dp[i - current coin] + 1)
+check if last index is greater than amount (meaning could not make coins for it), return -1
+ else, return value
 */
 
 const coinChange = (coins, amount) => {
