@@ -33,7 +33,15 @@ All the elements of nums are unique.
 */
 
 /*
-
+**dynamic programming**
+bottom-up approach
+create new array with index = 1 more than target
+set initial index dp[0] = 1
+for loop --> start at index i = 1, i < target + 1
+ for of loop (nums array)
+  check if current index i - (current num in nums) >= 0
+   if so, update dp[i] = dp[i - num]
+return dp[target]
 */
 
 const combinationSum4 = (nums, target) => {

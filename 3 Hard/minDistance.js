@@ -36,7 +36,7 @@ word1 and word2 consist of lowercase English letters.
 
 
 const minDistance = (word1, word2) => {
-  let dp = new Array(word1.length + 1).fill(0).map(() => new Array(word2.length + 1).fill(0));
+  const dp = new Array(word1.length + 1).fill(0).map(() => new Array(word2.length + 1).fill(0));
 
   for (let i = 0; i <= word2.length; i++) {
     for (let j = 0; j <= word1.length; j++) {
