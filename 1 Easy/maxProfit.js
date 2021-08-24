@@ -26,7 +26,7 @@ Constraints:
 */
 
 /*
-create variables for minPrice --> set to max value of possible number
+create variables for minPrice --> set to first index of prices array
  max Profit --> set to 0 in case no profit
 For loop:
  check if prices at each index < minPrice
@@ -40,7 +40,7 @@ return maxProfit
 */
 
 const maxProfit = (prices) => {
-  let minPrice = Number.MAX_VALUE;
+  let minPrice = prices[0];
   let maxProfit = 0;
   for (let i = 0; i < prices.length; i++) {
     if (prices[i] < minPrice) {
