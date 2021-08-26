@@ -33,9 +33,23 @@ Constraints:
 */
 
 /*
-
+As long as there is a price > price ahead of current, it should be included
+--> Will only need to look at current and previous index, and take difference
+Create a maxProfit variable, set = 0
+For loop
+ start at i = 1, go to end of prices array
+  check if prices at current index > prices at previous index
+  if so,
+   add difference to maxProfit (prices[i] - prices[i - 1])
+return maxProfit
 */
 
 const maxProfit = (prices) => {
-
+  let maxprofit = 0;
+  for (let i = 1; i < prices.length; i++) {
+    if (prices[i] > prices[i - 1]) {
+      maxprofit += prices[i] - prices[i - 1];
+    }
+  }
+  return maxprofit;
 };
