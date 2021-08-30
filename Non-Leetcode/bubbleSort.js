@@ -30,6 +30,51 @@
 
 
 /*
+Solution with Helper --> optimized
+Create swap helper function to swap values when necessary
+ store temp variable as value at current index
+ update value at current index = value at current index + 1
+ update value at current index + 1 = temp value --> completes swap
+
+Main function:
+For loop:
+  Go up to i < array.length
+  Declare a swap count = 0;
+    Inner For loop:
+      Go up to j < array.length - 1 - i iterations so as to not consider the final (sorted)
+      element in the array in future iterations
+        If array at current index > array at one index greater,
+          increase swapCount by 1; call swap helper function with current index
+    If there are no swap counts made in the original for loop, break stop the loop, as all have been sorted
+return sorted array
+*/
+const bubbleSort = (array) => {
+  for (let i = 0; i < array.length; i++) {
+    let swapCount = 0;
+    for (let j = 0; j < array.length - 1 - i; j++) {
+      if (array[j] > array[j + 1]) {
+        swapCount++;
+        swapHelper(j, array);
+      }
+    }
+    if (!swapCount) {
+      break;
+    }
+  }
+  return array;
+};
+
+const swapHelper = (index, array) => {
+  const temp = array[index];
+  array[index] = array[index + 1];
+  array[index + 1] = temp;
+  return array;
+};
+
+
+
+/*
+No Helper Solution
 For loop:
   Go up to i < array.length
     Inner For loop:
@@ -55,33 +100,3 @@ const bubbleSort = (array) => {
   }
   return array;
 };
-
-
-
-
-/*
-Original solution with Helper
-const bubbleSort = (array) => {
-  for (let i = 0; i < array.length; i++) {
-    let swapCount = 0;
-    for (let j = 0; j < array.length - 1 - i; j++) {
-      if (array[j] > array[j + 1]) {
-        swapCount++;
-        swapHelper(j, j + 1, array);
-      }
-    }
-    if (!swapCount) {
-      break;
-    }
-  }
-
-  return array;
-};
-
-const swapHelper = (index1, index2, array) => {
-  let temp = array[index1];
-  array[index1] = array[index2];
-  array[index2] = temp;
-  return array;
-};
-*/
