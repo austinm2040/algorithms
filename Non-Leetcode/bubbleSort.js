@@ -30,24 +30,37 @@
 
 
 /*
-Create swap helper function to swap values when necessary
- store temp variable as array[index1];
-  array[index1] = array[index2];
-  array[index2] = temp;
-
-Main function:
 For loop:
   Go up to i < array.length
-  Declare a swap count = 0;
     Inner For loop:
-      Go up to j < array.length - 1 - i iterations so as to not consider the final (sorted)
-      element in the array in future iterations
-        If array at current index > array at one index greater,
-          increase swapCount by 1; call swap helper function with current index & 1 greater than current index
-    If there are no swap counts made in the original for loop, break stop the loop, as all have been sorted
+    Go up to j < array.length - 1 - i iterations so as to not consider the final (sorted)
+     element in the array in future iterations
+      Check if array at current index > array at one index greater
+       If so --> swap:
+        Create temp variable = value at current index j
+        change value at current index j to value at index j + 1
+        set value at index j + 1 = temp to perform swap
 return sorted array
 */
 
+const bubbleSort = (array) => {
+  for (let i = 0; i < array.length; i++) {
+    for (let j = 0; j < ( array.length - i -1 ); j++) {
+      if (array[j] > array[j + 1]) {
+        let temp = array[j];
+        array[j] = array[j + 1];
+        array[j + 1] = temp;
+      }
+    }
+  }
+  return array;
+};
+
+
+
+
+/*
+Original solution with Helper
 const bubbleSort = (array) => {
   for (let i = 0; i < array.length; i++) {
     let swapCount = 0;
@@ -71,3 +84,4 @@ const swapHelper = (index1, index2, array) => {
   array[index2] = temp;
   return array;
 };
+*/
