@@ -17,6 +17,8 @@ For loop:
       decrement i by 1
   update new current value at i (subtracted by one from previous line) = current --> completes swap, repeats process to reorder values up to i
 return array
+
+Time complexity: 0()
 */
 
 const insertionSort = (array) => {
