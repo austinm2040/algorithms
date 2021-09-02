@@ -1,4 +1,14 @@
 /*
+Selection Sort: The selection sort algorithm sorts an array by
+repeatedly finding the minimum element (considering ascending order)
+from unsorted part and putting it at the beginning. The algorithm maintains two subarrays in a given array.
+1) The subarray which is already sorted.
+2) Remaining subarray which is unsorted.
+In every iteration of selection sort, the minimum element (considering ascending order)
+from the unsorted subarray is picked and moved to the sorted subarray.
+*/
+
+/*
 Double loop
  At each inner loop's index, find and update min value
  swap new min with index at i
@@ -28,7 +38,7 @@ const selectionSort = (array) => {
       }
     }
     if (min !== i) {
-      let temp = array[i];
+      const temp = array[i];
       array[i] = array[min];
       array[min] = temp;
     }
@@ -38,27 +48,28 @@ const selectionSort = (array) => {
 
 /*
 Input: [4,2,1,7,0]
+sorted | unsorted
 
 i = 0:
 min = 4 (value = 0)
 temp = 4
 [0,2,1,7,0]
-[0,2,1,7,4]
+[0, | 2,1,7,4]
 
 i = 1:
 min = 2 (value = 1)
 temp = 2
 [0,1,1,7,4]
-[0,1,2,7,4]
+[0,1, | 2,7,4]
 
 i = 2:
-[0,1,2,7,4]
+[0,1,2, | 7,4]
 
 i = 3:
 min = 4 (value = 4)
 temp = 7
 [0,1,2,4,4]
-[0,1,2,4,7]
+[0,1,2,4,7 | ]
 
 Output: [0,1,2,4,7]
 */

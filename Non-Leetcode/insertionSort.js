@@ -4,7 +4,6 @@
  * Insertion sort iterates over an array, growing a sorted array behind the current location.
  * It takes each element from the input and finds the spot, up to the current point,
  * where that element belongs. It does this until it gets to the end of the array.
-
 */
 
 /*
@@ -18,7 +17,9 @@ For loop:
   update new current value at i (subtracted by one from previous line) = current --> completes swap, repeats process to reorder values up to i
 return array
 
-Time complexity: 0()
+Time complexity: 0(n^2)
+quickSort, mergeSort --> (n log n)
+selectionSort, insertionSort, bubbleSort --> 0(n^2)
 */
 
 const insertionSort = (array) => {

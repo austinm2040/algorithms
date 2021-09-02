@@ -47,6 +47,10 @@ For loop:
           increase swapCount by 1; call swap helper function with current index
     If there are no swap counts made in the original for loop, break stop the loop, as all have been sorted
 return sorted array
+
+Time complexity: 0(n^2)
+quickSort, mergeSort --> (n log n)
+selectionSort, insertionSort, bubbleSort --> 0(n^2)
 */
 const bubbleSort = (array) => {
   for (let i = 0; i < array.length; i++) {
