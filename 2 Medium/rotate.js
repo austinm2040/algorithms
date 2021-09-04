@@ -45,7 +45,22 @@ matrix[i].length == n
 */
 
 /*
+n = matrix.length
+1) Transpose Matrix
+2) Rotate Matrix
 
+1) Transpose:
+  Double For Loop:
+    0 < i < n
+      0 < j < n
+      Swap matrix[i][j] for matrix[j][i]
+
+2) Reflect:
+  Double For Loop:
+    0 < i < n
+      0 < j < (n/2)
+      Swap matrix[i][j] for matrix[i][n - j - 1]
+  Return matrix (transposed, then reflected)
 */
 
 const rotate = (matrix) => {
@@ -75,3 +90,44 @@ const reflect = (matrix) => {
   }
   return matrix;
 };
+
+/*
+Input: matrix = [[1,2,3],
+                 [4,5,6],
+                 [7,8,9]]
+Output: [[7,4,1],
+         [8,5,2],
+         [9,6,3]]
+
+** (n = length - 1) **
+[0,0] --> [0,n]
+[0,1] --> [1,n]
+[0,n] --> [n,n]
+
+[1,0] --> [0,1]
+[1,1] --> [1,1]
+[1,n] --> [n,1]
+
+[n,0] --> [0,0]
+[n,1] --> [1,0]
+[n,n] --> [n,0]
+
+if (i = 0) --> i = j, j = n
+if (i = 1) --> i = j, j = i
+if (i = n) --> i = j, j = 0
+
+Original:
+[ [ 1, 2, 3 ],
+  [ 4, 5, 6 ],
+  [ 7, 8, 9 ] ]
+
+Transposed:
+[ [ 1, 4, 7 ],
+  [ 2, 5, 8 ],
+  [ 3, 6, 9 ] ]
+
+Reflected (finished):
+[ [ 7, 4, 1 ],
+  [ 8, 5, 2 ],
+  [ 9, 6, 3 ] ]
+*/
