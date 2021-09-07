@@ -40,30 +40,40 @@ board and word consists of only lowercase and uppercase English letters.
 /*
 Need Helper function to check left, right, up, down at each cell
 
-Helper:
-Pass in parameters board, word, i & j indices, k --> tracking char in word
-Check if
-  k === word.length --> if so, word has been found, return true
-  i < 0 or i >= m ---> i index out of bounds, need to recurse, return false
-  j < 0 or j >= n ---> j index out of bounds, need to recurse, return false
-  board[i][j] !== word[k] --> need to recurse, return false
-Else
-  Set result variable = false
-  Set char variable = board[i][j] --> need to store in case of recursion later
-  Need to replace board[i][j] with arbitrary non-letter so as not to re-use
-    board[i][j] = '#'
-  Use recursion with result to try to advance and find word (else move i, j)
+Helper Function:
+Parameters --> board, word, i & j index, k (current char in word)
+Base cases:
+Return true, word has been able to be spelled with adjacent cells
+  k === word.length (since using index, word will be spelled if true)
+Move index by 1
+  Index i goes out of bounds --> return false
+  Index j goes out of bounds --> return false
+  board[i][j] !== word[k] --> return false
+
+If base cases not satisfied, board[i][j] === word[k] --> check adjacent cells
+Set result variable to false
+Set orig character variable = board[i][j] to save in memory
+Set board[i][j] = arbitrary non-letter so as not to re-use
+
+Check possible routes for result to === true --> recursion:
+Always advance k by 1, since board[i][j] === word[k]
   Possible moves:
-    i - 1, j --> up
-    i + 1, j --> down
-    i, j - 1 --> left
-    i, j + 1 --> right
-    Always advance k --> k + 1 since has passed previous tests and not returned false
-  If result === false, reset board[i][j] to orig char, not '#'
+    i - 1, j --> move up
+    i + 1, j --> move down
+    i, j - 1 --> move left
+    i, j + 1 --> move right
+  If result === false, reset board[i][j] = orig char
+
+If up, down, left, right exhausted without finding next char,
+  reset board[i][j] = char
+
+Return result --> true or false to advance index in double loop
+
 
 Main Function:
 Double For Loop
-  Use helper to check if word can be found starting at current index
+  Use helper to check if word can be found starting at [0,0],
+  First char in word, k = 0
 */
 
 const exist = (board, word) => {
@@ -93,7 +103,7 @@ const existHelper = (board, word, i, j, k) => {
   let result = false;
   const char = board[i][j];
 
-  board[i][j] = '#';
+  board[i][j] = 0;
 
   result = existHelper(board, word, i - 1, j, k + 1) // look up
         || existHelper(board, word, i + 1, j, k + 1) // look down
@@ -106,7 +116,6 @@ const existHelper = (board, word, i, j, k) => {
 
   return result;
 };
-
 
 /*
 Input: board = [["A","B","C","E"],
