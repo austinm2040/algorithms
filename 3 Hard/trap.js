@@ -20,7 +20,23 @@ n == height.length
 */
 
 /*
+create a total variable to track water level
+create left and right pointer to use as index --> 0, height.length - 1
+create left and right wall to act as barriers to check if water can hold
+While loop --> while left pointer < right pointer
+  Check if height[left] < height[right]
+    Ternary: if height[left] >= leftWall
+      leftWall = height[left] --> new leftWall created
+    else
+      Total += leftWall - height[left] --> walls still stand as is, count water in between
+    increase left pointer by 1
+  else --> if height[left] >= height[right]
+      rightWall = height[right] --> new rightWall created
+    else
+      Total += rightWall - height[right] --> --> walls still stand as is, count water in between
+    decrease right pointer by 1
 
+return Total
 */
 
 const trap = (height) => {
