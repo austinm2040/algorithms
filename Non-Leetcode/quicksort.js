@@ -65,21 +65,19 @@ const swap = (array, leftIndex, rightIndex) => {
 };
 
 const partition = (array, left, right) => {
-  const pivot = array[Math.floor((right + left) / 2)];
-  let i = left;
-  let j = right;
-  while (i <= j) {
-    while (array[i] < pivot) {
-      i++;
+  const pivot = Math.floor((left + right) / 2);
+  while (left <= right) {
+    while (array[left] < array[pivot]) {
+      left++;
     }
-    while (array[j] > pivot) {
-      j--;
+    while (array[right] > array[pivot]) {
+      right--;
     }
-    if (i <= j) {
-      swap(array, i, j);
-      i++;
-      j--;
+    if (left <= right) {
+      swap(array, left, right);
+      left++;
+      right--;
     }
   }
-  return i;
+  return left;
 };
