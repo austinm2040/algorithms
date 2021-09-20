@@ -26,17 +26,31 @@ Constraints:
 */
 
 /*
-
+Create boolean to track if x is negative, if so --> turn positive
+Set reversed variable = 0
+While loop --> while x > 0
+  Each iteration --> work backward
+  Divide x by 10
+  Move decimal of currently reversed integer to right by 1 (multiply by 10, add x/10)
+  Move decimal of x to left by 1, round down
+Check constraint if x > 2^31 or x < 2^-31 --> return 0
+Return reversed integer --> use negative boolean to return negative if needed
 */
 
 const reverse = (x) => {
-  let digit;
-  let result = 0;
-
-  while (x) {
-    digit = x % 10;
-    result = (result * 10) + digit;
-    x = x / 10 | 0;
+  const isNegative = x < 0 ? true : false;
+  if (isNegative){
+    x = x * -1;
   }
-  return result;
+
+  let reversed = 0;
+  while (x > 0) {
+    reversed = (x % 10) + (reversed * 10);
+    x = parseInt(x / 10);
+  }
+  if (reversed > 2**31) { // constraint
+    return 0;
+  }
+
+  return isNegative ? reversed * -1 : reversed;
 };
